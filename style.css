@@ -1,0 +1,81 @@
+@font-face {
+  font-family: Roboto-mono;
+  src: url(./Assets/RobotoMono-VariableFont_wght.ttf);
+}
+
+:root {
+  /* ---------- Font-Family --------- */
+  --font-roboto-mono: "Roboto-mono";
+
+  /* ----------- Background-color------------ */
+  --clr-bg-deep-indigo: #2a2857;
+
+  /* --------- Border-color------------ */
+  --clr-border-pure-black: #000000;
+}
+
+/* ----- Basic Boilerplate ------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  /* height: 100%; It will cause the page to scroll up everytime you refresh */
+  height: 200%;
+  min-height: 100dvh;
+  overflow-x: hidden; /* Recommended backup to catch rogue stray elements */
+}
+
+/* ------Top-announcement-bar------ */
+
+.hero-section {
+  position: relative;
+  border-bottom: 1px solid var(--clr-border-pure-black);
+  width: 100%;
+  height: 95vh;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url(./Assets/AlpineBerry.webp);
+  background-size: cover;
+  /* 1. Align the image inside the element */
+  background-position: center top -27px;
+
+  /* 2. Zoom the element */
+  transform: scale(1.2);
+
+  /* 3. PIN the zoom to the top edge so it doesn't push up/out */
+  transform-origin: top center;
+  z-index: -1;
+}
+
+.announcement-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-roboto-mono);
+  min-height: 30px;
+  background-color: var(--clr-bg-deep-indigo);
+  color: white;
+  font-weight: 500;
+  font-size: small;
+  /* outline: 1px solid black; */
+  /* --- hide it on scroll ---- */
+  position: sticky;
+  top: -30px; /* Scrolls out of view*/
+}
+nav {
+    
+}
