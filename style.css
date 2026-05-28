@@ -410,6 +410,7 @@ main {
 .best-seller-product {
   width: 100%;
   min-height: 100vh;
+  border-bottom: 2px solid var(--clr-border-pure-black);
 }
 
 .best-seller-product header {
@@ -601,6 +602,14 @@ main {
 .explore-all-button button:hover{
     background-color: var(--clr-bg-pure-white);
   color: var(--clr-text-pure-black);
+}
+
+
+/* Search section  */
+
+.search-section{
+    width: 100%;
+    height: 50vh;
 }
 
 /* --- BREAKPOINT: TABLETS --- */
