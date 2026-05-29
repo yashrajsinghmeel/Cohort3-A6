@@ -36,6 +36,7 @@
   --clr-bg-cloudberry-orange: #ff7f31;
   --clr-bg-baby-blue: #a2c9fc;
   --clr-bg-seashell-blue: #daeaff;
+  --clr-bg-lima-yellow-green: #73bc25;
 
   /* --------- Border-color------------ */
   --clr-border-pure-black: #000000;
@@ -66,6 +67,12 @@
   /* claim-icon-items spacing-gap */
   --gap-claim-icon-mobile: 42px;
   --gap-claim-icon-desktop: 74px;
+
+  /* reviews-section-spacing */
+  --top-reviews-setion-spacing-mobile: 80px;
+  --bottom-reviews-setion-spacing-mobile: 80px;
+  --top-reviews-setion-spacing-desktop: 120px;
+  --bottom-reviews-setion-spacing-desktop: 120px;
 }
 
 /* ----- Basic Boilerplate ------ */
@@ -1016,7 +1023,7 @@ main {
   font-family: var(--font-reckless);
   text-align: center;
   font-weight: 300;
-  font-size: clamp(2rem,3.3vmax,3rem);
+  font-size: clamp(2rem, 3.3vmax, 3rem);
 }
 
 .origin-section .claim-icon-items {
@@ -1033,7 +1040,7 @@ main {
 .claim-icon-item {
   flex-shrink: 0;
   /* width: 200px; */
- min-height: 200px;
+  min-height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1047,7 +1054,7 @@ main {
   max-width: 100px;
 }
 
-.claim-icon-item span{
+.claim-icon-item span {
   display: inline-block;
   color: var(--clr-text-pure-white);
   text-align: center;
@@ -1056,13 +1063,13 @@ main {
   font-size: 14px;
 }
 
-.button_our-story{
+.button_our-story {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.button_our-story button{
+.button_our-story button {
   font-family: var(--font-figtree);
   font-weight: 400;
   font-size: large;
@@ -1076,15 +1083,195 @@ main {
   color: var(--clr-text-pure-black);
 }
 
-.button_our-story button:hover{
+.button_our-story button:hover {
   color: var(--clr-text-pure-white);
   background-color: var(--clr-bg-dark-blue-violet);
 }
 
-.reviews-section{
+.reviews-section {
+  padding-top: var(--top-reviews-setion-spacing-desktop);
+  padding-bottom: var(--bottom-reviews-setion-spacing-desktop);
   width: 100%;
-  height: 50vh;
+  min-height: 100dvh;
 }
+
+.reviews-section header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5.125rem;
+  /* border: 1px solid; */
+}
+
+.reviews-section header .header-wrapper-reviews-section {
+  /* border: 1px solid; */
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.header-wrapper-reviews-section h2 {
+  font-family: var(--font-midnight-medium);
+  display: inline-block;
+  max-width: fit-content;
+  border: 1px solid var(--clr-border-pure-black);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  font-size: 3.75rem;
+  background-color: var(--clr-bg-lima-yellow-green);
+  border-radius: 6px;
+  padding: 0 5px;
+  transform: rotate(-2deg);
+}
+
+.header-wrapper-reviews-section .reviews-tagline {
+  font-family: var(--font-reckless);
+  font-weight: 300;
+  font-size: 3.2vmax;
+  color: var(--clr-text-dark-coffee-black);
+}
+
+.reviews-card-container {
+  display: flex;
+  min-width: 100%;
+  /* border: 1px solid; */
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.reviews-card-wrapper {
+  /* border: 1px solid; */
+  min-width: fit-content;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  margin: auto;
+  gap: 15px;
+}
+
+.reviews-card-container .reviews-card {
+  /* border: 1px solid; */
+  height: 440px;
+}
+
+.reviews-card-content {
+  width: 17.5rem;
+  padding: 1.875rem 0.625rem 0.625rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-height: 100%;
+  overflow: hidden;
+  color: var(--color-black);
+  background: var(--bg-color);
+  border: 0.0625rem solid var(--clr-border-pure-black);
+  border-radius: 0.75rem;
+}
+
+.customer-testimonial-content {
+  width: 100%;
+  padding: 0 1.25rem;
+  min-height: 18.125rem;
+  aspect-ratio: 260 / 290;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  /* border: 1px solid black; */
+}
+
+.testimonial-text {
+  color: var(--clr-text-dark-coffee-black);
+  text-align: center;
+  font-size: var(--font-size);
+  line-height: 1.14em;
+  letter-spacing: -0.005em;
+  font-weight: 300;
+  font-family: var(--font-reckless);
+}
+
+.customer-testimonial-content .author {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.22em;
+  letter-spacing: 0.005em;
+  opacity: 0.6;
+}
+
+.reviews-card-content .shop {
+  display: flex;
+  height: 108px;
+  background-color: var(--product-bg-color);
+  border: 1px solid var(--clr-border-pure-black);
+  border-radius: 0.75rem;
+}
+
+.reviews-card-content .image {
+  min-width: 4.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 0.25rem 0.625rem 0.625rem;
+}
+
+.reviews-card-content .image img {
+  min-width: 3.75rem;
+  max-width: 3.75rem;
+  object-position: center;
+  object-fit: contain;
+  aspect-ratio: 120 / 120;
+}
+
+.reviews-card-content .shop .content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9375rem 0.625rem 0.9375rem 0.75rem;
+  border-left: 1px solid var(--clr-border-pure-black);
+}
+
+.reviews-card-content .content .product-name {
+  font-family: var(--font-roboto-mono);
+  font-weight: 400;
+  line-height: 1em;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: left;
+  color: var(--clr-text);
+  font-size: 14px;
+}
+
+.reviews-card-content .content button {
+  background-color: var(--clr-bg-pure-white);
+  color: var(--clr-text-dark-coffee-black);
+  border: 1px solid var(--clr-border-pure-black);
+  min-width: 4.375rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3.125rem;
+  box-sizing: border-box;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  font-family: var(--font-figtree);
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reviews-card-content .content button:hover {
+  color: var(--clr-text-pure-white);
+  background-color: var(--clr-bg-dark-blue-violet);
+}
+
 /* --- BREAKPOINT: small laptops --- */
 @media (max-width: 1024px) {
   /* Navbar */
@@ -1128,16 +1315,25 @@ main {
   }
 
   /* origin-section */
-  .kettle_icon{
+  .kettle_icon {
     width: 140px;
   }
 
-  .origin-section header h1{
+  .origin-section header h1 {
     font-size: 9rem;
   }
 
-  .origin-mission-statement p{
-    font-size: clamp(2rem,4vw,3rem);
+  .origin-mission-statement p {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  /* reviews-section */
+  .reviews-section header .header-wrapper-reviews-section {
+    /* border: 1px solid; */
+    width: 70%;
+  }
+  .header-wrapper-reviews-section .reviews-tagline {
+    font-size: 4.5vmax;
   }
 }
 
@@ -1162,24 +1358,33 @@ main {
 
   /* origin-section */
 
-  .togglebr1{
+  .togglebr1 {
     display: none;
   }
 
-  .kettle_icon{
+  .kettle_icon {
     width: 120px;
   }
-  .origin-section header h1{
+  .origin-section header h1 {
     font-size: 8rem;
   }
 
-  .origin-section header h2{
+  .origin-section header h2 {
     margin-bottom: 50px;
   }
 
-  .origin-mission-statement p{
-    font-size: clamp(2rem,4vw,3rem);
+  .origin-mission-statement p {
+    font-size: clamp(2rem, 4vw, 3rem);
     padding: 0 10px;
+  }
+
+  /* reviews-section */
+  .reviews-section header .header-wrapper-reviews-section {
+    /* border: 1px solid; */
+    width: 80%;
+  }
+  .header-wrapper-reviews-section .reviews-tagline {
+    font-size: 5vmax;
   }
 }
 
@@ -1228,19 +1433,32 @@ main {
     /* border: 1px solid; */
   }
 
-   /* origin-section */
-   .origin-section{
-     padding-top: var(--top-origin-section-spacing-mobile);
-  padding-bottom: var(--bottom-spacing-search-section-mobile);
-   }
-  .kettle_icon{
+  /* origin-section */
+  .origin-section {
+    padding-top: var(--top-origin-section-spacing-mobile);
+    padding-bottom: var(--bottom-spacing-search-section-mobile);
+  }
+  .kettle_icon {
     width: 110px;
   }
 
-  .origin-section header{
+  .origin-section header {
     min-height: 30%;
   }
-  .origin-section header h1{
+  .origin-section header h1 {
     font-size: 7rem;
+  }
+
+  /* reviews-section */
+  .header-wrapper-reviews-section h2 {
+    font-size: 3rem;
+  }
+
+  .reviews-section header .header-wrapper-reviews-section {
+    /* border: 1px solid; */
+    width: 90%;
+  }
+  .header-wrapper-reviews-section .reviews-tagline {
+    font-size: 4vmax;
   }
 }
