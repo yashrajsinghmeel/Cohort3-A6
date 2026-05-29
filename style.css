@@ -431,6 +431,7 @@ main {
   width: 100%;
   min-height: 100vh;
   border-bottom: 2px solid var(--clr-border-pure-black);
+  padding-bottom: 50px;
 }
 
 .best-seller-product header {
@@ -937,7 +938,7 @@ main {
   padding-bottom: var(--bottom-spacing-search-section-desktop);
   position: relative;
   width: 100%;
-  height: 200dvh;
+  min-height: 200dvh;
   /* border: 1px solid; */
   z-index: 10;
   display: flex;
@@ -975,6 +976,7 @@ main {
   z-index: inherit;
   /* border: 1px solid; */
   font-family: var(--font-midnight-medium);
+  margin-bottom: 100px;
 }
 
 .origin-section header h2 {
@@ -1002,6 +1004,7 @@ main {
 }
 
 .origin-section .origin-mission-statement {
+  margin-bottom: 100px;
   width: 100%;
   /* height: 20%; */
   /* border: 1px solid; */
@@ -1017,6 +1020,7 @@ main {
 }
 
 .origin-section .claim-icon-items {
+  margin-bottom: 100px;
   /* border: 1px solid; */
   width: 100%;
   /* height: 20%; */
