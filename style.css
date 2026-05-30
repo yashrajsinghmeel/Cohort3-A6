@@ -1272,6 +1272,75 @@ main {
   background-color: var(--clr-bg-dark-blue-violet);
 }
 
+/* Clients-Partners-Section */
+
+.clients_partners-section {
+  /* border: 1px solid; */
+  max-width: 100%;
+  height: 95dvh;
+  display: flex;
+  margin-bottom: 100px;
+}
+
+.clients_partners-image {
+  width: 50%;
+}
+
+.clients_partners-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.clients_partners-info-text {
+  width: 50%;
+  background-color: var(--clr-bg-deep-indigo);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 3.75rem;
+}
+
+.clients_partners-info-text header h1 {
+  font-family: var(--font-reckless);
+  color: var(--clr-text-pure-white);
+  padding-bottom: 0.1em;
+  font-weight: 300;
+  font-size: 84px;
+  letter-spacing: -0.1px;
+}
+
+.clients_partners-info-text p {
+  width: 100%;
+  max-width: 500px;
+  font-family: var(--font-figtree);
+  color: var(--clr-text-pure-white);
+  font-size: x-large;
+  font-weight: 400;
+  padding-bottom: 0.5em;
+}
+
+.clients_partners-info-text button {
+  font-family: var(--font-figtree);
+  font-weight: 400;
+  font-size: large;
+  display: inline-block;
+  border: 0.5px solid var(--clr-border-pure-black);
+  width: fit-content;
+  padding: 15px 70px;
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0, 1);
+  background-color: var(--clr-bg-pure-white);
+  color: var(--clr-text-pure-black);
+  margin-top: 0.5em;
+}
+
+.clients_partners-info-text button:hover {
+  color: var(--clr-text-pure-white);
+  background-color: var(--clr-bg-dark-blue-violet);
+}
+
 /* --- BREAKPOINT: small laptops --- */
 @media (max-width: 1024px) {
   /* Navbar */
@@ -1335,6 +1404,32 @@ main {
   .header-wrapper-reviews-section .reviews-tagline {
     font-size: 4.5vmax;
   }
+
+  /* Clients-Partners-Section */
+
+  .clients_partners-section {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .clients_partners-image {
+    width: 100%;
+    height: calc(100dvh - 100px);
+  }
+
+  .clients_partners-info-text{
+    width: 100%;
+    height: 60dvh;
+    align-items: center;
+  }
+
+  .clients_partners-info-text header h1{
+    text-align: center;
+  }
+  .clients_partners-info-text p{
+    text-align: center;
+  }
+
 }
 
 /* BREAKPOINT: TABLET DEVICES */
@@ -1385,6 +1480,23 @@ main {
   }
   .header-wrapper-reviews-section .reviews-tagline {
     font-size: 5vmax;
+  }
+   /* Clients-Partners-Section */
+
+  .clients_partners-info-text{
+    padding: 0 1.1rem;
+    width: 100%;
+    height: 60dvh;
+    align-items: center;
+  }
+
+  .clients_partners-info-text header h1{
+    text-align: center;
+    font-size: 4rem;
+  }
+  .clients_partners-info-text p{
+    text-align: center;
+    font-size: larger;
   }
 }
 
@@ -1460,5 +1572,29 @@ main {
   }
   .header-wrapper-reviews-section .reviews-tagline {
     font-size: 4vmax;
+  }
+
+   /* Clients-Partners-Section */
+
+
+  .clients_partners-image {
+    width: 100%;
+    height: calc(70dvh);
+  }
+
+  .clients_partners-info-text{
+    padding: 0 1.1rem;
+    width: 100%;
+    height: 60dvh;
+    align-items: center;
+  }
+
+  .clients_partners-info-text header h1{
+    text-align: center;
+    font-size: 3.05rem;
+  }
+  .clients_partners-info-text p{
+    text-align: center;
+    font-size: large;
   }
 }
