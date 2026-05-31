@@ -87,7 +87,8 @@ html {
   width: 100%;
   /* height: 100%; It will cause the page to scroll up everytime you refresh */
   min-height: 100dvh;
-  overflow-x: hidden; /* Recommended backup to catch rogue stray elements */
+  overflow-x: hidden;
+  /* Recommended backup to catch rogue stray elements */
 }
 
 /* ------------General Default Settings------------ */
@@ -1344,10 +1345,179 @@ main {
 
 /* Featured-lattes-section */
 
-.featured-lattes-section {
-  padding-top: var(--top-spacing-desktop);
+/* .featured-lattes-section {
   padding-bottom: var(--bottom-spacing-desktop);
+} */
+
+/* designed-for-ease svg */
+.Designed_for_ease_icon {
+  position: absolute;
+  top: 15px;
+  right: 10%;
+  width: 160px;
+  z-index: 10;
+}
+
+.featrued-lattes-carousel-container {
+  display: flex;
+  position: relative;
+  /* border: 1px solid; */
+  width: 100%;
+  height: auto;
+  overflow-x: scroll;
+
+  /* Animates the scroll position change. Clicking a link or triggering a script-based scroll glides the viewport smoothly instead of jumping instantly. */
+  scroll-behavior: smooth;
+
+  /* The CSS Scroll Snap Magic */
+  /* Enforces scroll snapping along the horizontal axis. The viewport strictly locks onto specific child elements whenever a user finishes scrolling. */
+  /* scroll-snap-type: x mandatory;
+  * x: Snaps only during horizontal (left-to-right) scrolling.
+  * y: Enforces snapping along the vertical axis (up and down).
+  * mandatory: Forces the viewport to snap to a point when scrolling stops. If no element is perfectly aligned, it automatically rolls forward or backward to the nearest item.
+  * Requires child elements to have the scroll-snap-align property (e.g., start or center) to work properly. */
+  scroll-snap-type: x mandatory;
+
+  /* Hide the ugly default scrollbar. */
+  /* Hide for Internet Explorer/Legacy Edge */
+  -ms-overflow-style: none;
+  /* Hide for Firefox */
+  scrollbar-width: none;
+}
+
+/*  completely hides the scrollbar visual element on WebKit-based browsers while keeping the ability to scroll intact. */
+/* This selector only works in WebKit browsers (like Google Chrome, Apple Safari, Microsoft Edge, and Opera). */
+.featured-lattes-section::-webkit-scrollbar {
+  display: none;
+}
+
+.featrued-lattes-carousel {
+  width: 100%;
+  flex-shrink: 0;
+  padding-top: var(--top-spacing-desktop);
+  padding-bottom: 25px;
   background-color: var(--dark-bg);
+  /* border: 1px solid; */
+  scroll-snap-align: start; /* Snaps perfectly to the top edge */
+}
+
+/* sliding logic and nav-bars */
+.nav-bars {
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 100;
+  padding: 15px 0;
+}
+
+/* The Horizontal Bar Style */
+.bar {
+  display: block;
+  width: 60px; /* Length of bar */
+  height: 5px; /* Thickness of bar */
+  background: rgba(139, 162, 185, 0.5);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* =========================================
+   2. The Fallback (Method 1: Click/Target)
+   Trigger: Only works when URL changes (#latte-1)
+   ========================================= */
+@supports not (animation-timeline: view()) {
+  /* If the container HAS a target of #latte-1, style the bar linking to #latte-1 */
+  .featured-lattes-section:has(#latte-1:target) .bar[href="#latte-1"],
+  .featured-lattes-section:has(#latte-2:target) .bar[href="#latte-2"],
+  .featured-lattes-section:has(#latte-3:target) .bar[href="#latte-3"],
+  .featured-lattes-section:has(#latte-4:target) .bar[href="#latte-4"],
+  .featured-lattes-section:has(#latte-5:target) .bar[href="#latte-5"] {
+    background: #8ba2b9;
+    width: 80px; /* Expands when active */
+  }
+}
+
+/* =========================================
+   3. The God-Tier (Method 2: Scroll Timeline)
+   Trigger: Updates instantly while scrolling
+   ========================================= */
+@supports (timeline-scope: none) {
+  /* A. Scope the Timeline to the Parent */
+  /* This allows the .nav-bars (child) to see the .slide (child) timelines */
+  /* Now the signals can travel from the Container -> Grandparent -> Nav Bars */
+  .featured-lattes-section {
+    timeline-scope: --s1, --s2, --s3, --s4, --s5;
+    position: relative;
+  }
+
+  /* B. Broadcast: Use SHORTHAND to lock the Axis */
+  /* Syntax: view-timeline: [name] [axis]; */
+  #latte-1 { view-timeline: --s1 inline; }
+  #latte-2 { view-timeline: --s2 inline; }
+  #latte-3 { view-timeline: --s3 inline; }
+  #latte-4 { view-timeline: --s4 inline; }
+  #latte-5 { view-timeline: --s5 inline; }
+
+  /* C. The Animation (Corrected) */
+  @keyframes active-bar {
+    /* 1. Start inactive (matches your default .bar styles) */
+    0% {
+      background: rgba(139, 162, 185, 0.5);
+      width: 60px;
+    }
+    
+    /* 2. Peak active state (when slide is centered in the viewport) */
+    40%, 60% {
+      background: #8ba2b9;
+      width: 80px;
+    }
+    
+    /* 3. End inactive as the slide scrolls away */
+    100% {
+      background: rgba(139, 162, 185, 0.5);
+      width: 60px;
+    }
+  }
+
+  /* D. Tune the Reception (Corrected) */
+  .bar {
+    animation-timing-function: linear;
+    /* Remove fill-mode: both. Since our 0% and 100% states now match 
+       the default inactive state, we don't need it extending backward. */
+       
+    /* Using 'cover' ensures the animation tracks exactly from the moment 
+       the element's edge touches the scrollport to when it fully leaves. */
+    animation-range: cover; 
+  }
+
+  /* E. Link Bars to Specific Timelines AND Assign Name */
+  /* Ab animation tabhi trigger hogi jab timeline connect hogi */
+
+  .bar[href="#latte-1"] {
+    animation-name: active-bar;
+    animation-timeline: --s1;
+  }
+
+  .bar[href="#latte-2"] {
+    animation-name: active-bar;
+    animation-timeline: --s2;
+  }
+
+  .bar[href="#latte-3"] {
+    animation-name: active-bar;
+    animation-timeline: --s3;
+  }
+
+  .bar[href="#latte-4"] {
+    animation-name: active-bar;
+    animation-timeline: --s4;
+  }
+
+  .bar[href="#latte-5"] {
+    animation-name: active-bar;
+    animation-timeline: --s5;
+  }
 }
 
 .featrued-lattes-carousel > header {
@@ -1603,6 +1773,11 @@ main {
 
   /* Featured-lattes-section */
 
+  .Designed_for_ease_icon{
+    
+    width: 140px;
+  }
+
   .header-wrapper-lattes-section .lattes-tagline {
     font-size: 4.4rem;
   }
@@ -1717,6 +1892,12 @@ main {
   }
 
   /* Featured-lattes-section */
+
+  .Designed_for_ease_icon{
+    right: 3%;
+    width: 120px;
+    top: 5px;
+  }
 
   .header-wrapper-lattes-section .lattes-tagline {
     font-size: 4rem;
@@ -1851,9 +2032,19 @@ main {
 
   /* featured-lattes-section */
 
-  .featured-lattes-section {
-    padding-top: var(--top-spacing-mobile);
-    padding-bottom: var(--bottom-spacing-mobile);
+  .Designed_for_ease_icon{
+    width: 100px;
+    right: 1%;
+    top: 1px;
+  }
+  
+  .featrued-lattes-carousel {
+    padding-top: var(--top-spacing-desktop);
+    padding-bottom: 25px;
+  }
+
+  .featured-lattes-carousel_card-wrapper{
+    padding: 0 8px;
   }
   .header-wrapper-lattes-section h2 {
     font-size: 3rem;
@@ -1865,7 +2056,7 @@ main {
     padding: 0 15px;
   }
 
-  .featured-lattes-carousel_card-image{
+  .featured-lattes-carousel_card-image {
     height: 300px;
   }
 
@@ -1894,10 +2085,51 @@ main {
   .featured-lattes-carousel_card-content p {
     text-align: center;
     font-size: 14px;
-
   }
-  .featured-lattes-carousel_card-content button{
+  .featured-lattes-carousel_card-content button {
     font-size: small;
     padding: 10px 30px;
   }
+
+/* sliding logic and nav-bars */
+
+.bar{
+  width: 30px;
+}
+
+/* =========================================
+   3. The God-Tier (Method 2: Scroll Timeline)
+   Trigger: Updates instantly while scrolling
+   ========================================= */
+@supports (timeline-scope: none) {
+  /* A. Scope the Timeline to the Parent */
+  /* This allows the .nav-bars (child) to see the .slide (child) timelines */
+  /* Now the signals can travel from the Container -> Grandparent -> Nav Bars */
+  .featured-lattes-section {
+    timeline-scope: --s1, --s2, --s3, --s4, --s5;
+    position: relative;
+  }
+
+  /* C. The Animation (Corrected) */
+  @keyframes active-bar {
+    /* 1. Start inactive (matches your default .bar styles) */
+    0% {
+      background: rgba(139, 162, 185, 0.5);
+      width: 30px;
+    }
+    
+    /* 2. Peak active state (when slide is centered in the viewport) */
+    40%, 60% {
+      background: #8ba2b9;
+      width: 50px;
+    }
+    
+    /* 3. End inactive as the slide scrolls away */
+    100% {
+      background: rgba(139, 162, 185, 0.5);
+      width: 30px;
+    }
+  }
+}
+
 }
