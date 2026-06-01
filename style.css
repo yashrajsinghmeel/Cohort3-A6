@@ -37,6 +37,7 @@
   --clr-bg-baby-blue: #a2c9fc;
   --clr-bg-seashell-blue: #daeaff;
   --clr-bg-lima-yellow-green: #73bc25;
+  --clr-bg-pumpkin-orange:#F26412;
 
   /* --------- Border-color------------ */
   --clr-border-pure-black: #000000;
@@ -1824,7 +1825,73 @@ main {
   color: var(--clr-text-pure-white);
 }
 
+/* --- about-us section ----  */
+.about-us-section {
+  /* border: 1px solid; */
+  max-width: 100%;
+  height: 95dvh;
+  display: flex;
+  overflow: hidden;
+}
 
+.about-us-image {
+  width: 50%;
+}
+
+.about-us-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-us-info-text {
+  width: 50%;
+  background-color: var(--clr-bg-pumpkin-orange);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 3.75rem;
+}
+
+.about-us-info-text header h1 {
+  font-family: var(--font-reckless);
+  color: var(--clr-text-pure-white);
+  padding-bottom: 0.1em;
+  font-weight: 300;
+  font-size: 84px;
+  letter-spacing: -0.1px;
+}
+
+.about-us-info-text p {
+  width: 100%;
+  max-width: 500px;
+  font-family: var(--font-figtree);
+  color: var(--clr-text-pure-white);
+  font-size: x-large;
+  font-weight: 400;
+  padding-bottom: 0.5em;
+}
+
+.about-us-info-text button {
+  font-family: var(--font-figtree);
+  font-weight: 400;
+  font-size: large;
+  display: inline-block;
+  border: 0.5px solid var(--clr-border-pure-black);
+  width: fit-content;
+  padding: 15px 70px;
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0, 1);
+  background-color: var(--clr-bg-pure-white);
+  color: var(--clr-text-pure-black);
+  margin-top: 0.5em;
+}
+
+.about-us-info-text button:hover {
+  color: var(--clr-text-pure-white);
+  background-color: var(--clr-bg-dark-blue-violet);
+}
 
 /* --- BREAKPOINT: small laptops --- */
 @media (max-width: 1024px) {
@@ -1974,6 +2041,31 @@ main {
   .header-wrapper-journal-section .journal-tagline{
     font-size: 4.5vmax;
   }
+
+  /* -- about-us section -- */
+
+  .about-us-section {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .about-us-image {
+    width: 100%;
+    height: calc(100dvh - 100px);
+  }
+
+  .about-us-info-text {
+    width: 100%;
+    height: 60dvh;
+    align-items: center;
+  }
+
+  .about-us-info-text header h1 {
+    text-align: center;
+  }
+  .about-us-info-text p {
+    text-align: center;
+  }
 }
 
 /* BREAKPOINT: TABLET DEVICES */
@@ -2092,6 +2184,22 @@ main {
     font-size: 4.5vmax;
   }
 
+  /* -- about-us section -- */
+  .about-us-info-text {
+    padding: 0 1.1rem;
+    width: 100%;
+    height: 60dvh;
+    align-items: center;
+  }
+
+  .about-us-info-text header h1 {
+    text-align: center;
+    font-size: 4rem;
+  }
+  .about-us-info-text p {
+    text-align: center;
+    font-size: larger;
+  }
 
 }
 
@@ -2323,6 +2431,28 @@ main {
   }
   .journal-section-explore-all-button button{
     padding: 15px 50px;
+  }
+
+  /* -- about-us section -- */
+   .about-us-image {
+    width: 100%;
+    height: calc(70dvh);
+  }
+
+  .about-us-info-text {
+    padding: 0 1.1rem;
+    width: 100%;
+    height: 60dvh;
+    align-items: center;
+  }
+
+  .about-us-info-text header h1 {
+    text-align: center;
+    font-size: 3.05rem;
+  }
+  .about-us-info-text p {
+    text-align: center;
+    font-size: large;
   }
 
 }
