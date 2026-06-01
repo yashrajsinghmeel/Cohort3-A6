@@ -1682,6 +1682,150 @@ main {
   background-color: var(--clr-bg-dark-blue-violet);
 }
 
+/* ---- Journal - section ---- */
+
+.journal-section{
+  padding-top: var(--top-spacing-desktop);
+  padding-bottom: var(--bottom-spacing-desktop);
+}
+
+.journal-section header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5.125rem;
+  /* border: 1px solid; */
+}
+
+.journal-section header .header-wrapper-journal-section {
+  /* border: 1px solid; */
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.header-wrapper-journal-section h2 {
+  font-family: var(--font-midnight-medium);
+  display: inline-block;
+  max-width: fit-content;
+  border: 1px solid var(--clr-border-pure-black);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  font-size: 3.75rem;
+  background-color: var(--clr-bg-amber-yellow);
+  border-radius: 6px;
+  padding: 0 5px;
+  transform: rotate(-2deg);
+}
+
+.header-wrapper-journal-section .journal-tagline {
+  font-family: var(--font-reckless);
+  font-weight: 300;
+  font-size: 3.2vmax;
+  color: var(--clr-text-dark-coffee-black);
+}
+
+.journal-section-carousel-container{
+  margin-bottom: 36px;
+  width: 100%;
+  display: flex;
+  padding: 0 2.5rem;
+  gap: 15px;
+  height: 399px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.journal-section-carousel-blog-card{
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: .0625rem solid var(--clr-border-pure-black);
+  height: 100%;
+  width: 20.25rem;
+  transition: all .3s cubic-bezier(.5, 0, 0, 1);
+  border-radius: .75rem;
+}
+
+.blog-card_media{
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 324/328;
+  contain: paint;
+  background-color: var(--brand-color);
+}
+
+.blog-card_media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 119/119;
+}
+
+.blog-card_media .category-tag{
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  z-index: 10;
+  font-size: 1.375rem;
+  font-family: var(--font-midnight-medium);
+  font-weight: 600;
+  color: var(--clr-text-dark-coffee-black);
+  border: .0625rem solid var(--clr-border-pure-black);
+  border-radius: .375rem;
+  text-transform: uppercase;
+  padding: .0625rem .375rem 0;
+  background-color: var(--clr-bg-pure-white);
+}
+
+.blog-card_info{
+  height: 71px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  padding: .875rem .75rem;
+  background-color: var(--clr-bg-light-sky-blue);
+  border-top: .0625rem solid var(--clr-border-pure-black);
+  font-family: var(--font-roboto-mono);
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+/* --- explore-all-button --- */
+.journal-section-explore-all-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.journal-section-explore-all-button button {
+  font-weight: 400px;
+  font-family: var(--font-figtree);
+  font-size: larger;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0, 1);
+  border: 0.5px solid var(--clr-border-pure-black);
+  width: fit-content;
+  padding: 15px 70px;
+  border-radius: 30px;
+  background-color: var(--clr-bg-pure-white);
+  color: var(--clr-text-pure-black);
+}
+
+.journal-section-explore-all-button button:hover {
+  background-color: var(--clr-bg-dark-blue-violet);
+  color: var(--clr-text-pure-white);
+}
+
+
+
 /* --- BREAKPOINT: small laptops --- */
 @media (max-width: 1024px) {
   /* Navbar */
@@ -1822,6 +1966,14 @@ main {
   .featured-lattes-carousel_card-content p {
     text-align: center;
   }
+
+  /* -- journal-section -- */
+  .journal-section header .header-wrapper-journal-section {
+    width: 70%;
+  }
+  .header-wrapper-journal-section .journal-tagline{
+    font-size: 4.5vmax;
+  }
 }
 
 /* BREAKPOINT: TABLET DEVICES */
@@ -1931,6 +2083,16 @@ main {
   .featured-lattes-carousel_card-content p {
     text-align: center;
   }
+
+  /* -- journal-section -- */
+  .journal-section header .header-wrapper-journal-section {
+    width: 80%;
+  }
+  .header-wrapper-journal-section .journal-tagline{
+    font-size: 4.5vmax;
+  }
+
+
 }
 
 /* --- BREAKPOINT: MOBILE DEVICES --- */
@@ -2098,6 +2260,23 @@ main {
 }
 
 /* =========================================
+   2. The Fallback (Method 1: Click/Target)
+   Trigger: Only works when URL changes (#latte-1)
+   ========================================= */
+@supports not (animation-timeline: view()) {
+  /* If the container HAS a target of #latte-1, style the bar linking to #latte-1 */
+  .featured-lattes-section:has(#latte-1:target) .bar[href="#latte-1"],
+  .featured-lattes-section:has(#latte-2:target) .bar[href="#latte-2"],
+  .featured-lattes-section:has(#latte-3:target) .bar[href="#latte-3"],
+  .featured-lattes-section:has(#latte-4:target) .bar[href="#latte-4"],
+  .featured-lattes-section:has(#latte-5:target) .bar[href="#latte-5"] {
+    background: #8ba2b9;
+    width: 50px; /* Expands when active */
+  }
+}
+
+
+/* =========================================
    3. The God-Tier (Method 2: Scroll Timeline)
    Trigger: Updates instantly while scrolling
    ========================================= */
@@ -2131,5 +2310,19 @@ main {
     }
   }
 }
+
+/* -- journal-section -- */
+  .journal-section header .header-wrapper-journal-section {
+    width: 90%;
+  }
+  .header-wrapper-journal-section .journal-tagline{
+    font-size: 4vmax;
+  }
+  .header-wrapper-journal-section h2{
+    font-size: 3rem;
+  }
+  .journal-section-explore-all-button button{
+    padding: 15px 50px;
+  }
 
 }
