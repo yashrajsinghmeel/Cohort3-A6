@@ -37,13 +37,14 @@
   --clr-bg-baby-blue: #a2c9fc;
   --clr-bg-seashell-blue: #daeaff;
   --clr-bg-lima-yellow-green: #73bc25;
-  --clr-bg-pumpkin-orange:#F26412;
+  --clr-bg-pumpkin-orange: #f26412;
 
   /* --------- Border-color------------ */
   --clr-border-pure-black: #000000;
 
   /* ---------- Text color ------------ */
   --clr-text-pure-white: #ffffff;
+  --clr-text-off-white:#fbf9eb;
   --clr-text-pure-black: #000;
   --clr-text-dark-coffee-black: #201c1a;
 
@@ -181,7 +182,7 @@ h2 {
   font-size: small;
 }
 
-nav {
+.navbar-top {
   padding: 0 20px;
   border: 1px solid;
   width: 98%;
@@ -195,7 +196,7 @@ nav {
   justify-content: space-between;
 }
 
-nav .left {
+.navbar-top .left {
   /* border: solid; */
   height: 100%;
   /* flex-basis: 30%; */
@@ -210,7 +211,7 @@ nav .left {
   display: none;
 }
 
-nav .left ul {
+.navbar-top .left ul {
   /* border: solid; */
   height: 100%;
   display: flex;
@@ -1454,11 +1455,21 @@ main {
 
   /* B. Broadcast: Use SHORTHAND to lock the Axis */
   /* Syntax: view-timeline: [name] [axis]; */
-  #latte-1 { view-timeline: --s1 inline; }
-  #latte-2 { view-timeline: --s2 inline; }
-  #latte-3 { view-timeline: --s3 inline; }
-  #latte-4 { view-timeline: --s4 inline; }
-  #latte-5 { view-timeline: --s5 inline; }
+  #latte-1 {
+    view-timeline: --s1 inline;
+  }
+  #latte-2 {
+    view-timeline: --s2 inline;
+  }
+  #latte-3 {
+    view-timeline: --s3 inline;
+  }
+  #latte-4 {
+    view-timeline: --s4 inline;
+  }
+  #latte-5 {
+    view-timeline: --s5 inline;
+  }
 
   /* C. The Animation (Corrected) */
   @keyframes active-bar {
@@ -1467,13 +1478,14 @@ main {
       background: rgba(139, 162, 185, 0.5);
       width: 60px;
     }
-    
+
     /* 2. Peak active state (when slide is centered in the viewport) */
-    40%, 60% {
+    40%,
+    60% {
       background: #8ba2b9;
       width: 80px;
     }
-    
+
     /* 3. End inactive as the slide scrolls away */
     100% {
       background: rgba(139, 162, 185, 0.5);
@@ -1486,10 +1498,10 @@ main {
     animation-timing-function: linear;
     /* Remove fill-mode: both. Since our 0% and 100% states now match 
        the default inactive state, we don't need it extending backward. */
-       
+
     /* Using 'cover' ensures the animation tracks exactly from the moment 
        the element's edge touches the scrollport to when it fully leaves. */
-    animation-range: cover; 
+    animation-range: cover;
   }
 
   /* E. Link Bars to Specific Timelines AND Assign Name */
@@ -1685,7 +1697,7 @@ main {
 
 /* ---- Journal - section ---- */
 
-.journal-section{
+.journal-section {
   padding-top: var(--top-spacing-desktop);
   padding-bottom: var(--bottom-spacing-desktop);
 }
@@ -1730,7 +1742,7 @@ main {
   color: var(--clr-text-dark-coffee-black);
 }
 
-.journal-section-carousel-container{
+.journal-section-carousel-container {
   margin-bottom: 36px;
   width: 100%;
   display: flex;
@@ -1741,20 +1753,20 @@ main {
   overflow-x: scroll;
 }
 
-.journal-section-carousel-blog-card{
+.journal-section-carousel-blog-card {
   flex-shrink: 0;
   position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: .0625rem solid var(--clr-border-pure-black);
+  border: 0.0625rem solid var(--clr-border-pure-black);
   height: 100%;
   width: 20.25rem;
-  transition: all .3s cubic-bezier(.5, 0, 0, 1);
-  border-radius: .75rem;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0, 1);
+  border-radius: 0.75rem;
 }
 
-.blog-card_media{
+.blog-card_media {
   position: relative;
   width: 100%;
   height: auto;
@@ -1763,38 +1775,38 @@ main {
   background-color: var(--brand-color);
 }
 
-.blog-card_media img{
+.blog-card_media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   aspect-ratio: 119/119;
 }
 
-.blog-card_media .category-tag{
+.blog-card_media .category-tag {
   position: absolute;
-  top: .75rem;
-  left: .75rem;
+  top: 0.75rem;
+  left: 0.75rem;
   z-index: 10;
   font-size: 1.375rem;
   font-family: var(--font-midnight-medium);
   font-weight: 600;
   color: var(--clr-text-dark-coffee-black);
-  border: .0625rem solid var(--clr-border-pure-black);
-  border-radius: .375rem;
+  border: 0.0625rem solid var(--clr-border-pure-black);
+  border-radius: 0.375rem;
   text-transform: uppercase;
-  padding: .0625rem .375rem 0;
+  padding: 0.0625rem 0.375rem 0;
   background-color: var(--clr-bg-pure-white);
 }
 
-.blog-card_info{
+.blog-card_info {
   height: 71px;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
   align-items: stretch;
-  padding: .875rem .75rem;
+  padding: 0.875rem 0.75rem;
   background-color: var(--clr-bg-light-sky-blue);
-  border-top: .0625rem solid var(--clr-border-pure-black);
+  border-top: 0.0625rem solid var(--clr-border-pure-black);
   font-family: var(--font-roboto-mono);
   text-transform: uppercase;
   font-size: 1rem;
@@ -1893,6 +1905,168 @@ main {
   background-color: var(--clr-bg-dark-blue-violet);
 }
 
+/* ----------Footer-------------- */
+.site-footer {
+  background-color: var(--clr-bg-light-sky-blue);
+  width: 100%;
+}
+
+.footer-upper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4.5rem 2.625rem 0;
+}
+
+.footer-social-contact-wrapper {
+  max-width: 1024px;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 70px;
+}
+
+.footer-newsletter {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 25px;
+}
+
+.footer-newsletter h2 {
+  font-family: var(--font-midnight-medium);
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.newsletter-tagline {
+  font-family: var(--font-reckless);
+  width: 100%;
+  line-height: 1.15em;
+  font-weight: 300;
+  margin: 0;
+  color: var(--clr-text-dark-coffee-black);
+  opacity: 0.8;
+  font-size: 2rem;
+  letter-spacing: -0.005em;
+}
+
+.email-submit-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.email-submit-section input {
+  border-radius: 12px;
+  padding-left: 16px;
+  height: 56px;
+  text-align: left;
+  color: var(--clr-text-dark-coffee-black);
+  font-family: var(--font-figtree);
+  font-size: 18px;
+  font-weight: 400;
+  background-color: var(--clr-bg-pure-white);
+  border: 1px solid var(--clr-border-pure-black);
+  min-width: 60%;
+}
+
+.email-submit-section button {
+  font-family: var(--font-figtree);
+  font-weight: 400;
+  font-size: large;
+  display: inline-block;
+  border: 0.5px solid var(--clr-border-pure-black);
+  width: fit-content;
+  padding: 15px 50px;
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0, 1);
+  background-color: var(--clr-bg-dark-blue-violet);
+  color: var(--clr-text-pure-white);
+}
+
+.email-submit-section button:hover {
+  color: var(--clr-text-pure-black);
+  background-color: var(--clr-bg-amber-yellow);
+}
+
+.email-submit-section input:focus-visible {
+  outline-width: 2px;
+  outline-style: auto;
+  outline-color: rgba(32, 28, 26, 1);
+  outline-offset: 0;
+}
+
+.footer-social-media {
+  align-self: flex-end;
+}
+
+.footer-social-media ul {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social-media ul li a {
+  border: solid 0.0625rem var(--clr-border-pure-black);
+  width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.footer-social-media ul li a:hover {
+  background-color: var(--clr-bg-pure-white);
+  transform: scale(0.95);
+}
+
+/* -----footer-navigation----- */
+
+.footer-navigation {
+  /* border: solid white; */
+  background-color: var(--clr-bg-deep-indigo);
+  padding: 2.5rem ;
+  font-family: var(--font-reckless);
+  color: var(--clr-text-off-white);
+  font-size: 18px;
+  border-radius: 15px;
+  display: flex;
+  /* gap: 15px; */
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.footer-menu {
+  flex-shrink: 0;
+  /* border: solid white; */
+  min-width: 250px;
+  margin-bottom: 30px;
+}
+
+.footer-menu .label {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.footer-menu .list{
+  line-height: 1.4em;
+    letter-spacing: .005em;
+    font-weight: 400;
+    font-family: var(--font-figtree);
+    color: var(--clr-text-off-white);
+    opacity: .5;
+}
+
 /* --- BREAKPOINT: small laptops --- */
 @media (max-width: 1024px) {
   /* Navbar */
@@ -1984,8 +2158,7 @@ main {
 
   /* Featured-lattes-section */
 
-  .Designed_for_ease_icon{
-    
+  .Designed_for_ease_icon {
     width: 140px;
   }
 
@@ -2038,7 +2211,7 @@ main {
   .journal-section header .header-wrapper-journal-section {
     width: 70%;
   }
-  .header-wrapper-journal-section .journal-tagline{
+  .header-wrapper-journal-section .journal-tagline {
     font-size: 4.5vmax;
   }
 
@@ -2065,6 +2238,22 @@ main {
   }
   .about-us-info-text p {
     text-align: center;
+  }
+
+  /* --------footer----- */
+
+  .footer-upper{
+    justify-content: center;
+  }
+
+  .footer-social-contact-wrapper{
+    width: fit-content;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-social-media {
+    align-self: flex-start;
   }
 }
 
@@ -2137,7 +2326,7 @@ main {
 
   /* Featured-lattes-section */
 
-  .Designed_for_ease_icon{
+  .Designed_for_ease_icon {
     right: 3%;
     width: 120px;
     top: 5px;
@@ -2180,7 +2369,7 @@ main {
   .journal-section header .header-wrapper-journal-section {
     width: 80%;
   }
-  .header-wrapper-journal-section .journal-tagline{
+  .header-wrapper-journal-section .journal-tagline {
     font-size: 4.5vmax;
   }
 
@@ -2200,7 +2389,6 @@ main {
     text-align: center;
     font-size: larger;
   }
-
 }
 
 /* --- BREAKPOINT: MOBILE DEVICES --- */
@@ -2302,18 +2490,18 @@ main {
 
   /* featured-lattes-section */
 
-  .Designed_for_ease_icon{
+  .Designed_for_ease_icon {
     width: 100px;
     right: 1%;
     top: 1px;
   }
-  
+
   .featrued-lattes-carousel {
     padding-top: var(--top-spacing-desktop);
     padding-bottom: 25px;
   }
 
-  .featured-lattes-carousel_card-wrapper{
+  .featured-lattes-carousel_card-wrapper {
     padding: 0 8px;
   }
   .header-wrapper-lattes-section h2 {
@@ -2361,80 +2549,80 @@ main {
     padding: 10px 30px;
   }
 
-/* sliding logic and nav-bars */
+  /* sliding logic and nav-bars */
 
-.bar{
-  width: 30px;
-}
+  .bar {
+    width: 30px;
+  }
 
-/* =========================================
+  /* =========================================
    2. The Fallback (Method 1: Click/Target)
    Trigger: Only works when URL changes (#latte-1)
    ========================================= */
-@supports not (animation-timeline: view()) {
-  /* If the container HAS a target of #latte-1, style the bar linking to #latte-1 */
-  .featured-lattes-section:has(#latte-1:target) .bar[href="#latte-1"],
-  .featured-lattes-section:has(#latte-2:target) .bar[href="#latte-2"],
-  .featured-lattes-section:has(#latte-3:target) .bar[href="#latte-3"],
-  .featured-lattes-section:has(#latte-4:target) .bar[href="#latte-4"],
-  .featured-lattes-section:has(#latte-5:target) .bar[href="#latte-5"] {
-    background: #8ba2b9;
-    width: 50px; /* Expands when active */
+  @supports not (animation-timeline: view()) {
+    /* If the container HAS a target of #latte-1, style the bar linking to #latte-1 */
+    .featured-lattes-section:has(#latte-1:target) .bar[href="#latte-1"],
+    .featured-lattes-section:has(#latte-2:target) .bar[href="#latte-2"],
+    .featured-lattes-section:has(#latte-3:target) .bar[href="#latte-3"],
+    .featured-lattes-section:has(#latte-4:target) .bar[href="#latte-4"],
+    .featured-lattes-section:has(#latte-5:target) .bar[href="#latte-5"] {
+      background: #8ba2b9;
+      width: 50px; /* Expands when active */
+    }
   }
-}
 
-
-/* =========================================
+  /* =========================================
    3. The God-Tier (Method 2: Scroll Timeline)
    Trigger: Updates instantly while scrolling
    ========================================= */
-@supports (timeline-scope: none) {
-  /* A. Scope the Timeline to the Parent */
-  /* This allows the .nav-bars (child) to see the .slide (child) timelines */
-  /* Now the signals can travel from the Container -> Grandparent -> Nav Bars */
-  .featured-lattes-section {
-    timeline-scope: --s1, --s2, --s3, --s4, --s5;
-    position: relative;
+  @supports (timeline-scope: none) {
+    /* A. Scope the Timeline to the Parent */
+    /* This allows the .nav-bars (child) to see the .slide (child) timelines */
+    /* Now the signals can travel from the Container -> Grandparent -> Nav Bars */
+    .featured-lattes-section {
+      timeline-scope: --s1, --s2, --s3, --s4, --s5;
+      position: relative;
+    }
+
+    /* C. The Animation (Corrected) */
+    @keyframes active-bar {
+      /* 1. Start inactive (matches your default .bar styles) */
+      0% {
+        background: rgba(139, 162, 185, 0.5);
+        width: 30px;
+      }
+
+      /* 2. Peak active state (when slide is centered in the viewport) */
+      40%,
+      60% {
+        background: #8ba2b9;
+        width: 50px;
+      }
+
+      /* 3. End inactive as the slide scrolls away */
+      100% {
+        background: rgba(139, 162, 185, 0.5);
+        width: 30px;
+      }
+    }
   }
 
-  /* C. The Animation (Corrected) */
-  @keyframes active-bar {
-    /* 1. Start inactive (matches your default .bar styles) */
-    0% {
-      background: rgba(139, 162, 185, 0.5);
-      width: 30px;
-    }
-    
-    /* 2. Peak active state (when slide is centered in the viewport) */
-    40%, 60% {
-      background: #8ba2b9;
-      width: 50px;
-    }
-    
-    /* 3. End inactive as the slide scrolls away */
-    100% {
-      background: rgba(139, 162, 185, 0.5);
-      width: 30px;
-    }
-  }
-}
-
-/* -- journal-section -- */
+  /* -- journal-section -- */
   .journal-section header .header-wrapper-journal-section {
     width: 90%;
   }
-  .header-wrapper-journal-section .journal-tagline{
+  .header-wrapper-journal-section .journal-tagline {
     font-size: 4vmax;
   }
-  .header-wrapper-journal-section h2{
+  .header-wrapper-journal-section h2 {
     font-size: 3rem;
   }
-  .journal-section-explore-all-button button{
+  .journal-section-explore-all-button button {
     padding: 15px 50px;
   }
 
   /* -- about-us section -- */
-   .about-us-image {
+  .about-us-image {
     width: 100%;
     height: calc(70dvh);
   }
@@ -2455,4 +2643,23 @@ main {
     font-size: large;
   }
 
+   /* --------footer----- */
+   .footer-upper{
+    padding:4.5rem 1.625rem 0 ;
+   }
+
+   .email-submit-section{
+    flex-direction: column;
+    gap: 15px;
+   }
+
+   .email-submit-section input{
+    min-width: 90%;
+   }
+
+   .email-submit-section button{
+    padding: 15px 0;
+    width: 90%;
+   }
+  
 }
